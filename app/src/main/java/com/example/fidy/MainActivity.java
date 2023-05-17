@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(MainActivity.this, list1.getItemAtPosition(position).toString() , Toast.LENGTH_SHORT).show();
 
                 Intent i = new Intent(MainActivity.this , MainActivity2.class);
+                //i.putExtra("Telephone", "0340673926");
+                i.putExtra("nom", list1.getItemAtPosition(position).toString());
                 startActivity(i);
             }
         });
