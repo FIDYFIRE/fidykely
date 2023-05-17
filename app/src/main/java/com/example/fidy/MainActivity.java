@@ -2,6 +2,7 @@ package com.example.fidy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
@@ -41,7 +42,10 @@ public class MainActivity extends AppCompatActivity {
         list1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, list1.getItemAtPosition(position).toString() , Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, list1.getItemAtPosition(position).toString() , Toast.LENGTH_SHORT).show();
+
+                Intent i = new Intent(MainActivity.this , MainActivity2.class);
+                startActivity(i);
             }
         });
 
@@ -50,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textView2.setText("Bonsoir" + " " + editTextTextPersonName.getText() );
+                //textView2.setText("Bonsoir" + " " + editTextTextPersonName.getText() );
+                //Toast.makeText(MainActivity.this, "Message envoyé " + editTextTextPersonName.getText(), Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(MainActivity.this, "Message envoyé " + editTextTextPersonName.getText(), Toast.LENGTH_SHORT).show();
             }
         });
     }
