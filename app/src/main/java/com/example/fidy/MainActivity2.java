@@ -2,6 +2,7 @@ package com.example.fidy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 
@@ -16,7 +17,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         e2 = findViewById(R.id.e2);
 
-        intent x = getIntent();
+        Intent x = getIntent();
         e2.setText( x.getStringExtra("nom"));
 
     }
