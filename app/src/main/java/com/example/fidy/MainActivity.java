@@ -12,14 +12,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.fidy.R;
 
 public class MainActivity extends AppCompatActivity {
 
     Button button;
-    EditText editTextTextPersonName;
+    EditText e1;
     TextView textView2;
     SmsManager s1;
     ListView list1;
@@ -34,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         button = findViewById(R.id.button);
-        editTextTextPersonName = findViewById(R.id.editTextTextPersonName);
+        e1 = findViewById(R.id.e1);
         textView2 = findViewById(R.id.textView2);
         list1 = findViewById(R.id.list1);
                 adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1, vecteur);
@@ -59,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
                 //textView2.setText("Bonsoir" + " " + editTextTextPersonName.getText() );
                 //Toast.makeText(MainActivity.this, "Message envoyé " + editTextTextPersonName.getText(), Toast.LENGTH_SHORT).show();
 
+
+                SmsManager s = SmsManager.getDefault();
+                s.sendTextMessage(e1.getText().toString(),null, "Bonjour",null,null);
             }
         });
     }
