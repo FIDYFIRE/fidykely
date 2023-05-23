@@ -3,6 +3,7 @@ package com.example.fidy;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
@@ -57,8 +58,12 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(MainActivity.this, "Message envoyé " + editTextTextPersonName.getText(), Toast.LENGTH_SHORT).show();
 
 
-                SmsManager s = SmsManager.getDefault();
-                s.sendTextMessage(e1.getText().toString(),null, "Bonjour",null,null);
+                //SmsManager s = SmsManager.getDefault();
+                //s.sendTextMessage(e1.getText().toString(),null, "Bonjour",null,null);
+
+                Intent in = new Intent(Intent.ACTION_DIAL);
+                in.setData(Uri.parse("tel:" + e1.getText().toString()));
+                startActivity(in);
             }
         });
     }
