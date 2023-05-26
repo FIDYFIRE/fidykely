@@ -3,6 +3,8 @@ package com.example.fidy;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.widget.EditText;
 
@@ -10,6 +12,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     EditText e2;
 
+    SQLiteOpenHelper helper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,8 +20,19 @@ public class MainActivity2 extends AppCompatActivity {
 
         e2 = findViewById(R.id.e2);
 
-        Intent x = getIntent();
+        /* Intent x = getIntent();
         e2.setText( x.getStringExtra("nom"));
+        */
+        helper = new SQLiteOpenHelper(MainActivity2.this, "Database.db", null, 1) {
+            @Override
+            public void onCreate(SQLiteDatabase db) {
 
+            }
+
+            @Override
+            public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+            }
+        };
     }
 }
