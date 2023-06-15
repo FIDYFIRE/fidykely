@@ -26,12 +26,13 @@ public class MainActivity2 extends AppCompatActivity {
         helper = new SQLiteOpenHelper(MainActivity2.this, "Database.db", null, 1) {
             @Override
             public void onCreate(SQLiteDatabase db) {
-
+                db.execSQL("CREATE TABLE Voitures ( id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, Nom TEXT, Prix REAL, Couleur TEXT, Annee INTEGER, Km INTEGER, Marque TEXT)");
             }
 
             @Override
             public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+                db.execSQL(" DROP TABLE Voitures");
+                onCreate(db);
             }
         };
     }
