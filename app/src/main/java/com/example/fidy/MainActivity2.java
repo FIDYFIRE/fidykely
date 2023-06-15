@@ -13,6 +13,7 @@ public class MainActivity2 extends AppCompatActivity {
     EditText e2;
 
     SQLiteOpenHelper helper;
+    SQLiteDatabase database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,5 +36,6 @@ public class MainActivity2 extends AppCompatActivity {
                 onCreate(db);
             }
         };
+        database = helper.getWritableDatabase();
     }
 }
