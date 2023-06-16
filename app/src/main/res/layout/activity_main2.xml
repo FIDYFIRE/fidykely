@@ -19,6 +19,28 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
-            android:text="Name" />
+            android:text="Tapez votre le nom de la voiture" />
+
+        <EditText
+            android:id="@+id/e3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Tapez le prix"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/e4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Tapez le Kilométrage"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/inserer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="INSERER LA VOITURE" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
