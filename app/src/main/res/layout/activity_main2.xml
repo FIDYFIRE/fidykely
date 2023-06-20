@@ -42,5 +42,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="INSERER LA VOITURE" />
+
+        <EditText
+            android:id="@+id/e5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

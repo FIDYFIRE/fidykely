@@ -3,6 +3,7 @@ package com.example.fidy;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
@@ -12,7 +13,7 @@ import android.widget.EditText;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    EditText e2, e3, e4;
+    EditText e2, e3, e4, e5;
     Button inserer;
     SQLiteOpenHelper helper;
     SQLiteDatabase database;
@@ -24,6 +25,7 @@ public class MainActivity2 extends AppCompatActivity {
         e2 = findViewById(R.id.e2);
         e3 = findViewById(R.id.e3);
         e4 = findViewById(R.id.e4);
+        e5 = findViewById(R.id.e5);
         inserer = findViewById(R.id.inserer);
 
         /* Intent x = getIntent();
@@ -41,11 +43,17 @@ public class MainActivity2 extends AppCompatActivity {
                 onCreate(db);
             }
         };
-        database = helper.getWritableDatabase();
+
+        database = helper.getReadableDatabase();
+        Cursor c =  database.rawQuery(" SELECT * FROM Voitures ", null);
+        c.moveToNext();
+        e5.setText(c.getString(1));
+
 
         inserer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                database = helper.getWritableDatabase();
                 database.execSQL(" INSERT INTO Voitures (Nom, Prix, Km) VALUES ( '" + e2.getText() + "', "+ e3.getText()+", "+ e4.getText()+" )");
             }
         });
