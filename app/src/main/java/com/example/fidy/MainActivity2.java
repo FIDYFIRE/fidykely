@@ -64,7 +64,7 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 database = helper.getReadableDatabase();
-                Cursor c =  database.rawQuery(" SELECT * FROM Voitures WHERE Nom = '"+e5.getText()+"' ", null);
+                Cursor c =  database.rawQuery(" SELECT * FROM Voitures WHERE Nom LIKE '%"+e5.getText()+"%' ", null);
                 c.moveToNext();
 
                 String [] from = {"Nom", "Prix"};
