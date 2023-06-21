@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,11 +54,27 @@ public class MainActivity2 extends AppCompatActivity {
         Cursor c =  database.rawQuery(" SELECT * FROM Voitures ", null);
         c.moveToNext();
 
-        String [] from = {"Nom", "Prix", "Km"};
-        int [] to = { R.id.x1, R.id.x2, R.id.x3  };
-        adapter = new SimpleCursorAdapter(MainActivity2.this, R.layout.element,c, from, to, 0);
+        String [] from = {"Nom", "Prix"};
+        int [] to = { android.R.id.text1, android.R.id.text2 };
+        adapter = new SimpleCursorAdapter(MainActivity2.this, android.R.layout.simple_list_item_2,c, from, to, 0);
 
         list2.setAdapter(adapter);
+
+        e5.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                database = helper.getReadableDatabase();
+                Cursor c =  database.rawQuery(" SELECT * FROM Voitures WHERE Nom = '"+e5.getText()+"' ", null);
+                c.moveToNext();
+
+                String [] from = {"Nom", "Prix"};
+                int [] to = { android.R.id.text1, android.R.id.text2 };
+                adapter = new SimpleCursorAdapter(MainActivity2.this, android.R.layout.simple_list_item_2,c, from, to, 0);
+
+                list2.setAdapter(adapter);
+                return false;
+            }
+        });
 
         inserer.setOnClickListener(new View.OnClickListener() {
             @Override
