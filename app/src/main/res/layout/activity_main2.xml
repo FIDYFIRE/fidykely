@@ -18,8 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="text"
-            android:text="Tapez votre le nom de la voiture" />
+            android:hint="Tapez le nom de la voiture"
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/e3"
@@ -49,5 +49,10 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text" />
+
+        <ListView
+            android:id="@+id/list2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

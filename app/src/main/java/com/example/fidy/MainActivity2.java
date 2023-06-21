@@ -10,11 +10,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
 public class MainActivity2 extends AppCompatActivity {
 
     EditText e2, e3, e4, e5;
     Button inserer;
+    ListView list2;
+    SimpleCursorAdapter adapter;
     SQLiteOpenHelper helper;
     SQLiteDatabase database;
     @Override
@@ -27,14 +31,15 @@ public class MainActivity2 extends AppCompatActivity {
         e4 = findViewById(R.id.e4);
         e5 = findViewById(R.id.e5);
         inserer = findViewById(R.id.inserer);
+        list2 = findViewById(R.id.list2);
 
         /* Intent x = getIntent();
         e2.setText( x.getStringExtra("nom"));
         */
-        helper = new SQLiteOpenHelper(MainActivity2.this, "Database.db", null, 1) {
+        helper = new SQLiteOpenHelper(MainActivity2.this, "Database2.db", null, 1) {
             @Override
             public void onCreate(SQLiteDatabase db) {
-                db.execSQL("CREATE TABLE Voitures ( id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, Nom TEXT, Prix REAL, Couleur TEXT, Annee INTEGER, Km INTEGER, Marque TEXT)");
+                db.execSQL("CREATE TABLE Voitures ( _id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, Nom TEXT, Prix REAL, Couleur TEXT, Annee INTEGER, Km INTEGER, Marque TEXT)");
             }
 
             @Override
@@ -47,8 +52,12 @@ public class MainActivity2 extends AppCompatActivity {
         database = helper.getReadableDatabase();
         Cursor c =  database.rawQuery(" SELECT * FROM Voitures ", null);
         c.moveToNext();
-        e5.setText(c.getString(1));
 
+        String [] from = {"Nom", "Prix", "Km"};
+        int [] to = { R.id.x1, R.id.x2, R.id.x3  };
+        adapter = new SimpleCursorAdapter(MainActivity2.this, R.layout.element,c, from, to, 0);
+
+        list2.setAdapter(adapter);
 
         inserer.setOnClickListener(new View.OnClickListener() {
             @Override
